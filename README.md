@@ -1,1 +1,5 @@
-# nitric-fan-out
+# Nitric Fan Out
+
+## Testing your app locally
+
+`nitric run`
