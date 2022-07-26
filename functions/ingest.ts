@@ -11,8 +11,6 @@ const tenants = tenant.for('reading');
 api.put('/tenants/:tenantid', async ({req, res}) => {
     const { tenantid } = req.params;
 
-    console.log("params", req.params)
-
     try {
         console.log(req.headers)
         const authHeader = (req.headers['authorization'] as string).replace("Bearer ", "")
