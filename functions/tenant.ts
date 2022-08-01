@@ -6,7 +6,7 @@ import keypair from 'keypair';
 const writableTenants = tenant.for('writing', 'reading');
 
 // create a new tenant
-api.post('/tenants', ({ req, res }) => {
+api.post('/tenants', async ({ req, res }) => {
     // generate a new id for this tenant
     const tenantId = short.generate()
 
@@ -22,7 +22,7 @@ api.post('/tenants', ({ req, res }) => {
         return
     }
 
-    writableTenants.doc(tenantId).set({
+    await writableTenants.doc(tenantId).set({
         name,
         publicKey: pairs.public,
     })

@@ -13,9 +13,9 @@ schedule('process-queues').every('hour', async () => {
     // Read all tenants
     const tenantStream = tenantColl.query().stream();
 
-    tenantStream.on('data', (data) => {
+    tenantStream.on('data', async (data) => {
         // publish an event to begin processing a tenants ingestion queue
-        processPub.publish({
+        await processPub.publish({
             payload: {
                 tenantId: data.id,
             }
